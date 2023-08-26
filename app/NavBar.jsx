@@ -1,18 +1,38 @@
 "use client";
 import React, { useEffect } from "react";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 const NavBar = () => {
+  const path = usePathname();
+  const navLink = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "Services",
+      href: "/services",
+    },
+    {
+      name: "About Us",
+      href: "/aboutus",
+    },
+    {
+      name: "Contact Us",
+      href: "/contactus",
+    },
+  ];
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.js");
   }, []);
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <Link className="navbar-brand" href="#">
+          Dr. Vipin Classes
+        </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -20,30 +40,28 @@ const NavBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Pricing
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
-            </li>
+        <div id="navbarNav">
+          <ul className="navbar-nav">
+            {navLink.map((link) => {
+              const isActive = path === link.href;
+              return (
+                <li className="nav-item">
+                  <Link
+                    className={
+                      isActive
+                        ? "nav-link text-danger fw-bold active"
+                        : "nav-link text-success"
+                    }
+                    aria-current="page"
+                    href={link.href}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
