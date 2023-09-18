@@ -10,6 +10,14 @@ const NavBar = () => {
       href: "/",
     },
     {
+      name: "ServerSide",
+      href: "/serverside",
+    },
+    {
+      name: "ClientSide",
+      href: "/clientside",
+    },
+    {
       name: "Services",
       href: "/services",
     },

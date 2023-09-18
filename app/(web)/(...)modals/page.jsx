@@ -1,20 +1,19 @@
 "use client";
-import DisplayMsg from "@/app/components/DisplayMsg";
 import Modals from "@/app/components/Modals";
 import React, { useState } from "react";
-const page = () => {
+import MyPage from "@/app/modals/page";
+const pages = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <h2>Services</h2>
-      <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
-        Show Modal
+      <button className="btn btn-warning" onClick={() => setIsOpen(true)}>
+        Show Modals
       </button>
       <Modals isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
-        <DisplayMsg />
+        <MyPage />
       </Modals>
     </div>
   );
 };
 
-export default page;
+export default pages;
