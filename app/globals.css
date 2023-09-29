@@ -1,1 +1,10 @@
 @import 'bootstrap/dist/css/bootstrap.css'; 
+h3{
+    color:blueviolet;
+    text-align: center;
+    font-family: Arial;
+}
+h2{
+    color:red;
+    font-family: Verdana;
+}
