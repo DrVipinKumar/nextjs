@@ -5,7 +5,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="container">
-      <h2>Dr. Vipin Classes</h2>
+      <h2>Dr. Vipin Classes</h2>      
     </main>
   );
 }

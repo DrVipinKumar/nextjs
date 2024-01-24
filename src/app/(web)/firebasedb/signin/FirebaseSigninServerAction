@@ -1,0 +1,24 @@
+"use server";
+import signin from "./signin";
+import AsyncLocalStorage from '@createnextapp/async-local-storage'
+const FirebaseSigninServerAction = async (prevState, formData) => {
+  const email = formData.get("email");
+  const pwd = formData.get("pwd");
+  if (email != "" && pwd != "") {
+    const { result, error } = await signin(email, pwd);
+    if (result != null) {
+      await AsyncLocalStorage.setItem('user', 'signin')
+      return {
+        message: "success",
+      };
+    } else if (error != null) {
+      return {
+        message: "Email or Password should be correct!",
+      };
+    }
+  } else {
+    return { message: "Fill Email or Password" };
+  }
+};
+
+export default FirebaseSigninServerAction;

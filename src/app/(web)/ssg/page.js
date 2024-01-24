@@ -1,19 +1,17 @@
 import Link from "next/link";
-
-const getQuotes = async () => {
+export const getQuotes = async () => {
   const data = await fetch("https://dummyjson.com/quotes", {
     cache: "force-cache",
   });
   const qdata = await data.json();
-  const quotes = qdata.quotes;
-  return quotes;
+  return qdata.quotes;
 };
+
 const page = async () => {
   const quotes = await getQuotes();
   return (
     <div className="container">
       <h4>Example of Static Rendering Next JS 13 or Above</h4>
-      <h5>List of Author Quotes</h5>
       {quotes.map((quote) => (
         <div key={quote.id}>
           <Link

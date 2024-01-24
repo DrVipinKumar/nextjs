@@ -10,30 +10,23 @@ const NavBar = () => {
       href: "/",
     },
     {
-      name: "SSG",
-      href: "/ssg",
-    },
-    {
-      name: "SSR",
-      href: "/ssr",
-    },
-    {
-      name: "Read Info",
-      href: "/readinfo",
-    },
-    {
-      name: "Send Info",
-      href: "/sendinfo",
-    },
-    {
-      name: "Image",
-      href: "/images",
+      name: "FirebaseDB",
+      href: "/firebasedb/signin",
     },
     {
       name: "Fonts",
       href: "/fonts",
     },
+    {
+      name: "GETAPI",
+      href: "/restapi/get",
+    },
+    {
+      name: "POSTAPI",
+      href: "/restapi/post",
+    },
   ];
+
   useEffect(() => {
     require("bootstrap");
   }, []);
@@ -57,7 +50,7 @@ const NavBar = () => {
             {navLink.map((link) => {
               const isActive = path === link.href;
               return (
-                <li className="nav-item">
+                <li className="nav-item" key={link.href}>
                   <Link
                     className={
                       isActive
